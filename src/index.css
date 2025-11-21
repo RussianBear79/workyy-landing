@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: radial-gradient(circle at 10% 10%, rgba(34, 197, 94, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(124, 58, 237, 0.2), transparent 45%),
+    #010513;
+  color: #ffffff;
+}
+
+/* Smooth scroll offset for fixed header */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
