@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import { LanguageToggle } from './LanguageToggle'
+import { ThemeToggle } from './ThemeToggle'
 
 export const Header = () => {
   const { language, content } = useLanguage()
@@ -56,8 +57,14 @@ export const Header = () => {
     return `/${language}${path}`
   }
 
+  const skipLabel = language === 'en' ? 'Skip to content' : 'Перейти к контенту'
+
   return (
-    <header className="sticky top-0 z-50 bg-[#01040fee] backdrop-blur border-b border-white/10">
+    <>
+      <a href="#main-content" className="skip-link">
+        {skipLabel}
+      </a>
+      <header className="sticky top-0 z-50 header-surface backdrop-blur">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to={getPath('/home')} className="text-2xl font-bold text-brand-green">
@@ -94,7 +101,8 @@ export const Header = () => {
               Use cases
             </Link>
           </nav>
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-3">
+            <ThemeToggle />
             <LanguageToggle />
             <Link
               to={getPath('/pricing')}
@@ -131,7 +139,10 @@ export const Header = () => {
             <Link to={getPath('/use-cases')} className="block">
               Use cases
             </Link>
-            <LanguageToggle />
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <LanguageToggle />
+            </div>
             <Link
               to={getPath('/pricing')}
               className="block text-center rounded-md bg-brand-green text-[#01040f] py-2 font-semibold"
@@ -142,6 +153,7 @@ export const Header = () => {
         )}
       </div>
     </header>
+    </>
   )
 }
 

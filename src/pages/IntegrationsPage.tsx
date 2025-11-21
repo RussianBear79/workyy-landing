@@ -26,7 +26,7 @@ const IntegrationsPage = () => {
         />
         <Header />
 
-        <main className="relative overflow-hidden py-20">
+        <main id="main-content" className="relative overflow-hidden py-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,197,94,0.08),transparent_55%),radial-gradient(circle_at_bottom,_rgba(124,58,237,0.15),transparent_45%)] pointer-events-none" />
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold mb-6">{currentIntegration.title}</h1>
@@ -40,7 +40,7 @@ const IntegrationsPage = () => {
   }
 
   return (
-    <div className="bg-[#01040f] text-white min-h-screen">
+    <div className="bg-[var(--bg-root)] text-[var(--text-primary)] min-h-screen transition-colors duration-300">
       <SEOHead
         title="Integrations"
         description="Connect Workyy to your data sources."
@@ -68,7 +68,7 @@ const IntegrationsPage = () => {
                 <Link
                   key={key}
                   to={getPath(`/integrations/${key}`)}
-                  className="p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition"
+                  className="surface-panel p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition"
                 >
                   <h3 className="text-xl font-semibold mb-2">{integ.title}</h3>
                   <p className="text-sm text-gray-300">{integ.description.substring(0, 150)}...</p>

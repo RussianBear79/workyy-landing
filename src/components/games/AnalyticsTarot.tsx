@@ -58,7 +58,7 @@ export const AnalyticsTarot = () => {
   }
 
   return (
-    <div className="bg-[#07122b] border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center gap-4">
+    <div className="surface-panel border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center gap-4">
       <div className="text-5xl">🎴</div>
       {selectedCard === null ? (
         <>

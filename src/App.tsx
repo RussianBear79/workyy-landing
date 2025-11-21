@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LanguageProvider } from './contexts/LanguageContext'
+import { ThemeProvider } from './contexts/ThemeContext'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
 import PricingPage from './pages/PricingPage'
@@ -13,8 +14,9 @@ import RoadmapPage from './pages/RoadmapPage'
 function App() {
   return (
     <BrowserRouter>
-      <LanguageProvider>
-        <Routes>
+      <ThemeProvider>
+        <LanguageProvider>
+          <Routes>
           {/* Redirect root to /en/home */}
           <Route path="/" element={<Navigate to="/en/home" replace />} />
           
@@ -43,7 +45,8 @@ function App() {
           {/* Fallback */}
           <Route path="*" element={<Navigate to="/en/home" replace />} />
         </Routes>
-      </LanguageProvider>
+        </LanguageProvider>
+      </ThemeProvider>
     </BrowserRouter>
   )
 }

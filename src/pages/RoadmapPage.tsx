@@ -12,7 +12,7 @@ const RoadmapPage = () => {
   }
 
   return (
-    <div className="bg-[#01040f] text-white min-h-screen">
+    <div className="bg-[var(--bg-root)] text-[var(--text-primary)] min-h-screen transition-colors duration-300">
       <SEOHead
         title={roadmapContent.title}
         description={roadmapContent.description}
@@ -20,7 +20,7 @@ const RoadmapPage = () => {
       />
       <Header />
 
-      <main className="relative overflow-hidden py-20">
+      <main id="main-content" className="relative overflow-hidden py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,197,94,0.08),transparent_55%),radial-gradient(circle_at_bottom,_rgba(124,58,237,0.15),transparent_45%)] pointer-events-none" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold mb-6">{roadmapContent.title}</h1>

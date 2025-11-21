@@ -28,7 +28,7 @@ export const MessyDataCleanup = () => {
   const dirtyLeft = rows.filter((row) => row.status !== 'ok').length
 
   return (
-    <div className="bg-[#07122b] border border-white/10 rounded-2xl p-6">
+    <div className="surface-panel border border-white/10 rounded-2xl p-6">
       <p className="text-sm text-gray-400 mb-4">Clean up messy data</p>
       <table className="w-full text-sm">
         <thead>

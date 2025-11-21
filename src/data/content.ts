@@ -196,7 +196,7 @@ export const content: Record<Language, Content> = {
           {
             heading: 'Interactive Canvas',
             catchphrase: 'Your Analysis, Your Way',
-            description: 'Workyy provides a flexible canvas where you can place anything anywhere. Unlike rigid BI dashboards, you're free to drag and arrange components as you see fit.',
+            description: 'Workyy provides a flexible canvas where you can place anything anywhere. Unlike rigid BI dashboards, you\'re free to drag and arrange components as you see fit.',
             bullets: [
               'Freeform positioning and resizing of blocks',
               'Code cell + visualization + text in one frame',
@@ -248,7 +248,7 @@ export const content: Record<Language, Content> = {
       playground: {
         title: 'Workyy Playground',
         subtitle: 'Test Your Data Skills – Play & Learn',
-        description: 'Workyy isn't just about work – it's also about engaging users to think analytically in a fun way.',
+        description: 'Workyy isn\'t just about work – it\'s also about engaging users to think analytically in a fun way.',
         games: [
           {
             title: 'Decision Simulator',
@@ -273,7 +273,7 @@ export const content: Record<Language, Content> = {
       design: {
         title: 'Design & User Experience – Aurora Inspired Interface',
         subtitle: 'A Dazzling yet Comforting UI',
-        description: 'Workyy's default theme draws inspiration from the Aurora Borealis. The background is a midnight blue – a dark, calming backdrop like a night sky.',
+        description: 'Workyy\'s default theme draws inspiration from the Aurora Borealis. The background is a midnight blue – a dark, calming backdrop like a night sky.',
         highlights: [
           {
             title: 'Northern Lights Palette',
@@ -312,23 +312,23 @@ export const content: Record<Language, Content> = {
     product: {
       canvas: {
         title: 'The Canvas',
-        description: 'The Canvas is Workyy's core workspace – a flexible, infinite page where you can build analyses freely. Drag and drop data blocks, live SQL/Python cells, charts, and even sticky notes anywhere to organize your insights. The Canvas lets you design a custom flow of data and visuals that fits your thinking, instead of forcing you into a predefined grid.',
+        description: 'The Canvas is Workyy\'s core workspace – a flexible, infinite page where you can build analyses freely. Drag and drop data blocks, live SQL/Python cells, charts, and even sticky notes anywhere to organize your insights. The Canvas lets you design a custom flow of data and visuals that fits your thinking, instead of forcing you into a predefined grid.',
         cta: 'Create your first Canvas now and explore your data in a whole new way.',
       },
       collaboration: {
         title: 'Collaboration',
-        description: 'Workyy is built for teamwork. Multiple team members can edit the same canvas at once and see each other's updates in real time. Add context by commenting directly on any chart, query, or note, and tag colleagues to bring them into the discussion. All changes are saved with version history, so you can always review or revert anything and see who made each edit.',
+        description: 'Workyy is built for teamwork. Multiple team members can edit the same canvas at once and see each other\'s updates in real time. Add context by commenting directly on any chart, query, or note, and tag colleagues to bring them into the discussion. All changes are saved with version history, so you can always review or revert anything and see who made each edit.',
         cta: 'Invite your team and start collaborating on data like never before.',
       },
       performance: {
         title: 'Performance',
-        description: 'Fast and scalable by design. Workyy's architecture is optimized to handle big data and complex calculations without breaking a sweat. It connects directly to your databases and data warehouses, pushing heavy computations to those powerful engines for maximum speed.',
-        cta: 'Experience Workyy's speed on your own data today.',
+        description: 'Fast and scalable by design. Workyy\'s architecture is optimized to handle big data and complex calculations without breaking a sweat. It connects directly to your databases and data warehouses, pushing heavy computations to those powerful engines for maximum speed.',
+        cta: 'Experience Workyy\'s speed on your own data today.',
       },
     },
     pricing: {
       title: 'Pricing',
-      description: 'Flexible plans for any team. Whether you're a small startup or a large enterprise, Workyy has a plan that fits.',
+      description: 'Flexible plans for any team. Whether you\'re a small startup or a large enterprise, Workyy has a plan that fits.',
       plans: [
         {
           name: 'Free',
@@ -357,7 +357,7 @@ export const content: Record<Language, Content> = {
     useCases: {
       'data-analysis': {
         title: 'Data Analysis',
-        description: 'For exploratory data analysis and deep dives, Workyy is an analyst's dream. Connect multiple data sources and freely explore them with SQL queries or even Python for advanced statistics and modeling.',
+        description: 'For exploratory data analysis and deep dives, Workyy is an analyst\'s dream. Connect multiple data sources and freely explore them with SQL queries or even Python for advanced statistics and modeling.',
         cta: 'Try Workyy for data analysis and accelerate your insights.',
       },
       'self-serve': {
@@ -377,12 +377,12 @@ export const content: Record<Language, Content> = {
       },
       'product-analytics': {
         title: 'Product Analytics',
-        description: 'Understand your user journey with Workyy's product analytics capabilities. Whether you're tracking sign-up funnels, feature adoption, or retention cohorts, Workyy lets you bring all your product data together for analysis.',
-        cta: 'Explore your user data with Workyy's product analytics.',
+        description: 'Understand your user journey with Workyy\'s product analytics capabilities. Whether you\'re tracking sign-up funnels, feature adoption, or retention cohorts, Workyy lets you bring all your product data together for analysis.',
+        cta: 'Explore your user data with Workyy\'s product analytics.',
       },
       'finance-ops': {
         title: 'Finance & Ops',
-        description: 'Keep a pulse on your business's financial and operational health. Workyy helps finance and ops teams consolidate data from spreadsheets, databases, and SaaS tools into one unified view.',
+        description: 'Keep a pulse on your business\'s financial and operational health. Workyy helps finance and ops teams consolidate data from spreadsheets, databases, and SaaS tools into one unified view.',
         cta: 'Unify your numbers with Workyy for finance and ops insights.',
       },
     },
@@ -404,8 +404,8 @@ export const content: Record<Language, Content> = {
       },
       startups: {
         title: 'Workyy for Startups',
-        description: 'Startups move fast and can't afford to spend months setting up a complex data stack. Workyy offers a quick-to-deploy analytics platform that grows with you.',
-        cta: 'Accelerate your startup with Workyy's ready-to-go analytics.',
+        description: 'Startups move fast and can\'t afford to spend months setting up a complex data stack. Workyy offers a quick-to-deploy analytics platform that grows with you.',
+        cta: 'Accelerate your startup with Workyy\'s ready-to-go analytics.',
       },
     },
     integrations: {
@@ -415,7 +415,7 @@ export const content: Record<Language, Content> = {
       },
       snowflake: {
         title: 'Snowflake',
-        description: 'Workyy seamlessly integrates with Snowflake, letting you leverage Snowflake's cloud data warehouse power. Just enter your Snowflake credentials and connect – Workyy will query data directly from your Snowflake warehouses.',
+        description: 'Workyy seamlessly integrates with Snowflake, letting you leverage Snowflake\'s cloud data warehouse power. Just enter your Snowflake credentials and connect – Workyy will query data directly from your Snowflake warehouses.',
       },
       bigquery: {
         title: 'BigQuery',
@@ -433,7 +433,7 @@ export const content: Record<Language, Content> = {
     resources: {
       security: {
         title: 'Security',
-        description: 'Your data's security is our top priority. Workyy employs enterprise-grade security measures to protect your information at every layer.',
+        description: 'Your data\'s security is our top priority. Workyy employs enterprise-grade security measures to protect your information at every layer.',
       },
       privacy: {
         title: 'Privacy Policy',
@@ -446,11 +446,11 @@ export const content: Record<Language, Content> = {
     },
     changelog: {
       title: 'Changelog',
-      description: 'Workyy is continuously evolving. Our Changelog page lists all new features, improvements, and fixes as soon as they're released.',
+      description: 'Workyy is continuously evolving. Our Changelog page lists all new features, improvements, and fixes as soon as they\'re released.',
     },
     roadmap: {
       title: 'Roadmap',
-      description: 'See what's coming next. Our Roadmap offers a transparent view of the features and improvements we plan to implement in Workyy.',
+      description: 'See what\'s coming next. Our Roadmap offers a transparent view of the features and improvements we plan to implement in Workyy.',
     },
   },
   ru: {
@@ -496,7 +496,7 @@ export const content: Record<Language, Content> = {
           },
           {
             title: 'Серьёзная мощь',
-            tagline: 'Under the hood, it's a serious data workstation.',
+            tagline: 'Under the hood, it\'s a serious data workstation.',
             body: 'Пишите сложные SQL-запросы и Python-скрипты, подключайте базы и любимые библиотеки. Workyy — это ноутбук и BI одновременно.',
           },
           {

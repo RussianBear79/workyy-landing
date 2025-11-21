@@ -7,7 +7,7 @@ export const DecisionSimulator = () => {
   const projectedRevenue = Math.round(visitors * (conversion / 100) * 42)
 
   return (
-    <div className="bg-[#07122b] border border-white/10 rounded-2xl p-6 flex flex-col gap-4">
+    <div className="surface-panel border border-white/10 rounded-2xl p-6 flex flex-col gap-4">
       <div>
         <p className="text-sm text-gray-400 mb-1">Marketing Budget</p>
         <input
@@ -35,7 +35,7 @@ export const DecisionSimulator = () => {
       </div>
       <div className="mt-2">
         <p className="text-xs uppercase text-brand-green tracking-[0.3em] mb-2">Projection</p>
-        <div className="bg-white/5 rounded-lg p-4">
+        <div className="surface-panel rounded-lg p-4">
           <p className="text-sm text-gray-400">Visitors</p>
           <p className="text-2xl font-bold">{visitors.toLocaleString()}</p>
           <p className="text-sm text-gray-400 mt-4">Projected Revenue</p>
