@@ -1,92 +1,176 @@
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 
+const footerCopy = {
+  en: {
+    brandTitle: 'Workyy',
+    brandDescription: 'Mixed SQL + Python nodes, DAGs, and collaborative analytics on one canvas.',
+    columns: [
+      {
+        title: 'Product',
+        links: [
+          { path: '/product/canvas', label: 'Canvas & Cells' },
+          { path: '/product/collaboration', label: 'Collaboration' },
+          { path: '/product/performance', label: 'Performance' },
+          { path: '/integrations/postgres', label: 'Integrations' },
+        ],
+      },
+      {
+        title: 'Solutions',
+        links: [
+          { path: '/use-cases/data-analysis', label: 'Data Teams' },
+          { path: '/use-cases/product-analytics', label: 'Product Analytics' },
+          { path: '/use-cases/finance-ops', label: 'RevOps & Finance' },
+          { path: '/use-cases', label: 'Startups' },
+        ],
+      },
+      {
+        title: 'Resources',
+        links: [
+          { path: '/resources/docs', label: 'Docs' },
+          { path: '/resources/templates', label: 'Tutorials & Templates' },
+          { path: '/resources/security', label: 'Security' },
+          { path: '/resources/privacy', label: 'Privacy & Terms' },
+        ],
+      },
+      {
+        title: 'Company',
+        links: [
+          { path: '/about', label: 'About' },
+          { path: '/careers', label: 'Careers' },
+          { path: '/changelog', label: 'Changelog' },
+          { path: '/roadmap', label: 'Roadmap' },
+        ],
+      },
+    ],
+    social: [
+      { label: 'LinkedIn', href: 'https://www.linkedin.com' },
+      { label: 'Twitter/X', href: 'https://twitter.com' },
+      { label: 'YouTube', href: 'https://youtube.com' },
+      { label: 'Discord', href: 'https://discord.com' },
+    ],
+    cta: {
+      title: 'Ready to build your first board?',
+      subtitle: 'Launch Workyy, invite Croc, and start exploring data together.',
+      action: 'Launch Workyy',
+    },
+  },
+  ru: {
+    brandTitle: 'Workyy',
+    brandDescription: 'SQL и Python ячейки, DAG и совместная аналитика на одном полотне.',
+    columns: [
+      {
+        title: 'Продукт',
+        links: [
+          { path: '/product/canvas', label: 'Канва и ячейки' },
+          { path: '/product/collaboration', label: 'Коллаборация' },
+          { path: '/product/performance', label: 'Производительность' },
+          { path: '/integrations/postgres', label: 'Интеграции' },
+        ],
+      },
+      {
+        title: 'Решения',
+        links: [
+          { path: '/use-cases/data-analysis', label: 'Аналитические команды' },
+          { path: '/use-cases/product-analytics', label: 'Product analytics' },
+          { path: '/use-cases/finance-ops', label: 'RevOps и финансы' },
+          { path: '/use-cases', label: 'Стартапы' },
+        ],
+      },
+      {
+        title: 'Ресурсы',
+        links: [
+          { path: '/resources/docs', label: 'Документация' },
+          { path: '/resources/templates', label: 'Туториалы и шаблоны' },
+          { path: '/resources/security', label: 'Безопасность' },
+          { path: '/resources/privacy', label: 'Политика и условия' },
+        ],
+      },
+      {
+        title: 'Компания',
+        links: [
+          { path: '/about', label: 'О нас' },
+          { path: '/careers', label: 'Карьера' },
+          { path: '/changelog', label: 'Changelog' },
+          { path: '/roadmap', label: 'Дорожная карта' },
+        ],
+      },
+    ],
+    social: [
+      { label: 'LinkedIn', href: 'https://www.linkedin.com' },
+      { label: 'Twitter/X', href: 'https://twitter.com' },
+      { label: 'YouTube', href: 'https://youtube.com' },
+      { label: 'Discord', href: 'https://discord.com' },
+    ],
+    cta: {
+      title: 'Готовы создать первую доску?',
+      subtitle: 'Запустите Workyy, пригласите Croc и исследуйте данные вместе.',
+      action: 'Запустить Workyy',
+    },
+  },
+}
+
 export const Footer = () => {
   const { language } = useLanguage()
+  const copy = footerCopy[language as 'en' | 'ru'] ?? footerCopy.en
 
   const getPath = (path: string) => {
     return `/${language}${path}`
   }
 
-  const footerColumns = [
-    {
-      title: 'PRODUCT',
-      links: [
-        { path: '/product/canvas', label: 'The Canvas' },
-        { path: '/product/collaboration', label: 'Collaboration' },
-        { path: '/product/performance', label: 'Performance' },
-        { path: '/pricing', label: 'Pricing' },
-        { path: '/changelog', label: 'Changelog' },
-        { path: '/roadmap', label: 'Roadmap' },
-      ],
-    },
-    {
-      title: 'USE CASES',
-      links: [
-        { path: '/use-cases/data-analysis', label: 'Data analysis' },
-        { path: '/use-cases/self-serve', label: 'Self-serve analytics' },
-        { path: '/use-cases/reporting', label: 'Reporting' },
-        { path: '/use-cases/data-modeling', label: 'Data modeling' },
-        { path: '/use-cases/product-analytics', label: 'Product analytics' },
-        { path: '/use-cases/finance-ops', label: 'Finance & Ops' },
-      ],
-    },
-    {
-      title: 'COMPARE',
-      links: [
-        { path: '/compare/classic-bi', label: language === 'en' ? 'Workyy vs. Classic BI' : 'Workyy vs. классические BI' },
-        { path: '/compare/notebooks', label: language === 'en' ? 'Workyy vs. Notebooks' : 'Workyy vs. ноутбуки' },
-        { path: '/compare/small-teams', label: language === 'en' ? 'Workyy for Small Teams' : 'Workyy для маленьких команд' },
-        { path: '/compare/startups', label: language === 'en' ? 'Workyy for Startups' : 'Workyy для стартапов' },
-      ],
-    },
-    {
-      title: 'INTEGRATIONS',
-      links: [
-        { path: '/integrations/postgres', label: 'Postgres' },
-        { path: '/integrations/snowflake', label: 'Snowflake' },
-        { path: '/integrations/bigquery', label: 'BigQuery' },
-        { path: '/integrations/mysql', label: 'MySQL' },
-        { path: '/integrations/csv', label: 'CSV / файлы' },
-      ],
-    },
-    {
-      title: 'RESOURCES',
-      links: [
-        { path: '/resources/security', label: 'Security' },
-        { path: '/resources/privacy', label: 'Privacy Policy' },
-        { path: '/resources/terms', label: 'Terms of Use' },
-      ],
-    },
-  ]
-
   return (
-    <footer className="bg-[#01040f] border-t border-white/10 py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-sm">
-        <div className="col-span-2 md:col-span-1">
-          <h3 className="text-2xl font-bold text-brand-green mb-4">Workyy</h3>
-          <p className="text-gray-400 text-sm">
-            {language === 'en'
-              ? 'Mixed SQL and Python nodes, DAG and collaborative analytics on one canvas.'
-              : 'Смешанные SQL и Python узлы, DAG и совместная аналитика на одной канве.'}
-          </p>
-        </div>
-        {footerColumns.map((column) => (
-          <div key={column.title}>
-            <h4 className="font-semibold text-white mb-4">{column.title}</h4>
-            <ul className="space-y-2 text-gray-400">
-              {column.links.map((link) => (
-                <li key={link.path}>
-                  <Link to={getPath(link.path)} className="hover:text-white transition">
-                    {link.label}
-                  </Link>
+    <footer className="border-t border-[var(--color-border)] py-16 transition-theme">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 text-sm">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          <div className="col-span-2 md:col-span-2 space-y-3">
+            <h3 className="text-2xl font-bold text-[var(--color-accent-primary)]">{copy.brandTitle}</h3>
+            <p className="text-[var(--color-text-muted)]">{copy.brandDescription}</p>
+          </div>
+          {copy.columns.map((column) => (
+            <div key={column.title}>
+              <h4 className="font-semibold text-[var(--color-text-primary)] mb-3">{column.title}</h4>
+              <ul className="space-y-2 text-[var(--color-text-muted)]">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <Link to={getPath(link.path)} className="hover:text-[var(--color-text-primary)] transition-smooth">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <div>
+            <h4 className="font-semibold text-[var(--color-text-primary)] mb-3">{language === 'en' ? 'Social' : 'Соцсети'}</h4>
+            <ul className="space-y-2 text-[var(--color-text-muted)]">
+              {copy.social.map((social) => (
+                <li key={social.label}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-[var(--color-text-primary)] transition-smooth"
+                  >
+                    {social.label}
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
-        ))}
+        </div>
+        <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] p-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p className="text-lg font-semibold text-[var(--color-text-primary)]">{copy.cta.title}</p>
+            <p className="text-[var(--color-text-muted)] text-sm">{copy.cta.subtitle}</p>
+          </div>
+          <Link
+            to={getPath('/pricing')}
+            className="inline-flex items-center justify-center px-5 py-2 rounded-md bg-[var(--color-accent-primary)] text-[var(--color-text-on-accent)] font-semibold hover:opacity-90 transition-smooth"
+          >
+            {copy.cta.action}
+          </Link>
+        </div>
       </div>
     </footer>
   )
 }
-

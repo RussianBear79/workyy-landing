@@ -79,11 +79,11 @@ export const ChartMemoryGame = () => {
   }
 
   return (
-    <div className="surface-panel border border-white/10 rounded-2xl p-6 space-y-4">
-      <div className="flex items-center justify-between text-sm text-gray-300">
+    <div className="surface-panel border border-[var(--color-border)] rounded-2xl p-6 space-y-4">
+      <div className="flex items-center justify-between text-sm text-[var(--color-text-secondary)]">
         <p>
           Pairs found:{' '}
-          <span className="font-semibold text-brand-green">
+          <span className="font-semibold text-[var(--color-accent-primary)]">
             {matches}/{totalPairs}
           </span>
         </p>
@@ -97,9 +97,9 @@ export const ChartMemoryGame = () => {
             key={card.id}
             onClick={() => handleFlip(idx)}
             disabled={card.matched}
-            className={`aspect-square rounded-xl border border-white/15 flex items-center justify-center text-2xl transition
-            ${card.flipped || card.matched ? 'bg-white/10 text-white' : 'bg-black/20 text-gray-500 hover:bg-black/30'}
-            ${card.matched ? 'ring-2 ring-brand-green/60' : ''}`}
+            className={`aspect-square rounded-xl border border-[var(--color-border)] flex items-center justify-center text-2xl transition-smooth
+            ${card.flipped || card.matched ? 'bg-[var(--color-bg-surface)] text-[var(--color-text-primary)]' : 'bg-[var(--color-bg-surface)]/50 text-[var(--color-text-muted)] hover:bg-[var(--color-bg-surface)]'}
+            ${card.matched ? 'ring-2 ring-[var(--color-accent-primary)]/60' : ''}`}
             aria-pressed={card.flipped || card.matched}
           >
             {card.flipped || card.matched ? (
@@ -111,7 +111,7 @@ export const ChartMemoryGame = () => {
           </button>
         ))}
       </div>
-      <div className="flex items-center justify-between text-xs text-gray-400">
+      <div className="flex items-center justify-between text-xs text-[var(--color-text-muted)]">
         <p>
           {matches === totalPairs
             ? 'You rebuilt the insight board!'
@@ -119,7 +119,7 @@ export const ChartMemoryGame = () => {
         </p>
         <button
           onClick={resetGame}
-          className="px-3 py-1 rounded-md border border-white/20 text-gray-200 hover:border-white transition text-xs"
+          className="px-3 py-1 rounded-md border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-surface)] transition-smooth text-xs"
         >
           Reset
         </button>

@@ -1,63 +1,61 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import { LanguageToggle } from './LanguageToggle'
-import { ThemeToggle } from './ThemeToggle'
+import { ThemePicker } from './ThemePicker'
+import { useActiveRoute } from '../hooks/useActiveRoute'
+
+const primaryNav = [
+  { label: 'Product', path: '/product/canvas' },
+  { label: 'Solutions', path: '/use-cases' },
+  { label: 'Learn', path: '/resources/docs' },
+  { label: 'Pricing', path: '/pricing' },
+  { label: 'For Teams', path: '/use-cases' },
+]
+
+const utilityLinks = [
+  { label: 'Docs', path: '/resources/docs' },
+  { label: 'Blog', path: '/resources/templates' },
+]
 
 export const Header = () => {
-  const { language, content } = useLanguage()
-  const location = useLocation()
-  const navigate = useNavigate()
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const { language } = useLanguage()
+  const { isActive } = useActiveRoute()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
-
-  const navMenus = [
-    {
-      id: 'product',
-      label: 'Product',
-      links: [
-        { path: '/product/canvas', label: 'The Canvas' },
-        { path: '/product/collaboration', label: 'Collaboration' },
-        { path: '/product/performance', label: 'Performance' },
-      ],
-    },
-    {
-      id: 'learn',
-      label: 'Learn',
-      links: [
-        { path: '/changelog', label: 'Changelog' },
-        { path: '/roadmap', label: 'Roadmap' },
-      ],
-    },
-    {
-      id: 'pricing',
-      label: 'Pricing',
-      links: [
-        { path: '/pricing', label: 'View Pricing' },
-      ],
-    },
-  ]
-
-  const handleDropdownToggle = (menu: string) => {
-    setOpenDropdown((prev) => (prev === menu ? null : menu))
-  }
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setOpenDropdown(null)
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node) && mobileMenuOpen) {
+        setMobileMenuOpen(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [mobileMenuOpen])
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMobileMenuOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
   }, [])
 
-  const getPath = (path: string) => {
-    return `/${language}${path}`
-  }
-
+  const handleMobileLinkClick = () => setMobileMenuOpen(false)
+  const getPath = (path: string) => `/${language}${path}`
   const skipLabel = language === 'en' ? 'Skip to content' : 'Перейти к контенту'
+
+  const desktopLinkClass = (path: string) =>
+    `transition-smooth ${
+      isActive(path)
+        ? 'text-[var(--color-accent-primary)] font-medium'
+        : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
+    }`
+
+  const mobileLinks = [...primaryNav, ...utilityLinks, { label: language === 'en' ? 'Login' : 'Войти', path: '/login' }]
 
   return (
     <>
@@ -65,94 +63,105 @@ export const Header = () => {
         {skipLabel}
       </a>
       <header className="sticky top-0 z-50 header-surface backdrop-blur">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to={getPath('/home')} className="text-2xl font-bold text-brand-green">
-            Workyy
-          </Link>
-          <nav ref={dropdownRef} className="hidden md:flex items-center space-x-8 text-sm">
-            {navMenus.map((menu) => (
-              <div key={menu.id} className="relative">
-                <button
-                  onClick={() => handleDropdownToggle(menu.id)}
-                  className="flex items-center gap-1 text-gray-300 hover:text-white transition"
-                >
-                  {menu.label}
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {openDropdown === menu.id && (
-                  <div className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-white/10 bg-[#07122b] shadow-lg">
-                    {menu.links.map((link) => (
-                      <Link
-                        key={link.path}
-                        to={getPath(link.path)}
-                        className="block px-4 py-2 text-gray-300 hover:bg-white/10 transition"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <Link to={getPath('/use-cases')} className="text-gray-300 hover:text-white transition">
-              Use cases
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <Link to={getPath('/home')} className="text-2xl font-bold text-[var(--color-accent-primary)]">
+              Workyy
             </Link>
-          </nav>
-          <div className="hidden md:flex items-center space-x-3">
-            <ThemeToggle />
-            <LanguageToggle />
-            <Link
-              to={getPath('/pricing')}
-              className="px-4 py-2 rounded-md bg-brand-green text-[#01040f] font-semibold hover:bg-green-400 transition"
-            >
-              {language === 'en' ? 'Try Demo' : 'Попробовать демо'}
-            </Link>
-          </div>
-          <button
-            onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="md:hidden text-gray-300 hover:text-white transition"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-white/10 py-4 space-y-3 text-sm text-gray-200">
-            {navMenus.map((menu) => (
-              <div key={menu.id}>
-                <div className="font-semibold mb-2">{menu.label}</div>
-                {menu.links.map((link) => (
-                  <Link key={link.path} to={getPath(link.path)} className="block pl-4 py-1 text-gray-300">
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            ))}
-            <Link to={getPath('/use-cases')} className="block">
-              Use cases
-            </Link>
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
+            <nav className="hidden md:flex items-center space-x-6 text-sm">
+              {primaryNav.map((item) => (
+                <Link key={item.label} to={getPath(item.path)} className={desktopLinkClass(item.path)}>
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="hidden md:flex items-center space-x-4 text-sm">
+              {utilityLinks.map((item) => (
+                <Link key={item.label} to={getPath(item.path)} className={desktopLinkClass(item.path)}>
+                  {item.label}
+                </Link>
+              ))}
+              <Link to={getPath('/login')} className={desktopLinkClass('/login')}>
+                {language === 'en' ? 'Login' : 'Войти'}
+              </Link>
+              <ThemePicker />
               <LanguageToggle />
+              <Link
+                to={getPath('/pricing')}
+                className="px-4 py-2 rounded-md border border-[var(--color-border)] text-[var(--color-text-primary)] font-semibold hover:border-[var(--color-accent-primary)] transition-smooth"
+              >
+                {language === 'en' ? 'Start Free Workspace' : 'Создать workspace'}
+              </Link>
+              <Link
+                to={getPath('/pricing')}
+                className="px-4 py-2 rounded-md bg-[var(--color-accent-primary)] text-[var(--color-text-on-accent)] font-semibold hover:opacity-90 transition-smooth"
+              >
+                {language === 'en' ? 'Launch a Demo Board' : 'Открыть демо-доску'}
+              </Link>
             </div>
-            <Link
-              to={getPath('/pricing')}
-              className="block text-center rounded-md bg-brand-green text-[#01040f] py-2 font-semibold"
+            <button
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="md:hidden text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-smooth"
             >
-              {language === 'en' ? 'Try Demo' : 'Попробовать демо'}
-            </Link>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
-        )}
-      </div>
-    </header>
+          {mobileMenuOpen && (
+            <>
+              <div
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-hidden="true"
+              />
+              <div
+                ref={mobileMenuRef}
+                className="md:hidden fixed top-16 left-0 right-0 bottom-0 bg-[var(--color-bg-root)] border-t border-[var(--color-border)] z-50 overflow-y-auto"
+              >
+                <div className="px-4 py-6 space-y-4 text-sm text-[var(--color-text-primary)]">
+                  {mobileLinks.map((item) => (
+                    <Link
+                      key={item.label}
+                      to={getPath(item.path)}
+                      onClick={handleMobileLinkClick}
+                      className={`block px-4 py-3 rounded-md min-h-[44px] flex items-center transition-smooth ${
+                        isActive(item.path)
+                          ? 'bg-[var(--color-accent-primary)]/20 text-[var(--color-accent-primary)] font-medium'
+                          : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-surface)] hover:text-[var(--color-text-primary)]'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                  <div className="flex items-center gap-3 px-4 py-2">
+                    <ThemePicker />
+                    <LanguageToggle />
+                  </div>
+                  <Link
+                    to={getPath('/pricing')}
+                    onClick={handleMobileLinkClick}
+                    className="block text-center rounded-md border border-[var(--color-border)] text-[var(--color-text-primary)] py-3 font-semibold hover:border-[var(--color-accent-primary)] transition-smooth min-h-[44px] flex items-center justify-center mx-4"
+                  >
+                    {language === 'en' ? 'Start Free Workspace' : 'Создать workspace'}
+                  </Link>
+                  <Link
+                    to={getPath('/pricing')}
+                    onClick={handleMobileLinkClick}
+                    className="block text-center rounded-md bg-[var(--color-accent-primary)] text-[var(--color-text-on-accent)] py-3 font-semibold hover:opacity-90 transition-smooth min-h-[44px] flex items-center justify-center mx-4"
+                  >
+                    {language === 'en' ? 'Launch a Demo Board' : 'Открыть демо-доску'}
+                  </Link>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </header>
     </>
   )
 }

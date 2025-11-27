@@ -24,9 +24,9 @@ export const SEOHead = ({ title, description, path }: SEOHeadProps) => {
       <html lang={language} />
       <title>{title} | Workyy</title>
       <meta name="description" content={description} />
-      <link rel="alternate" hreflang="en" href={enUrl} />
-      <link rel="alternate" hreflang="ru" href={ruUrl} />
-      <link rel="alternate" hreflang="x-default" href={enUrl} />
+      <link rel="alternate" hrefLang="en" href={enUrl} />
+      <link rel="alternate" hrefLang="ru" href={ruUrl} />
+      <link rel="alternate" hrefLang="x-default" href={enUrl} />
       <link rel="canonical" href={language === 'en' ? enUrl : ruUrl} />
     </Helmet>
   )

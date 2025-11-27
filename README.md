@@ -12,19 +12,19 @@ Landing page для веб-платформы Workyy — аналитическ�
 ## Установка
 
 ```bash
-npm install
+pnpm install
 ```
 
 ## Запуск
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ## Сборка
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## Структура

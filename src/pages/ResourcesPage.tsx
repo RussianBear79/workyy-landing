@@ -1,8 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import { SEOHead } from '../components/SEOHead'
-import { Header } from '../components/Header'
-import { Footer } from '../components/Footer'
 
 const ResourcesPage = () => {
   const { resource } = useParams<{ resource?: string }>()
@@ -18,23 +16,20 @@ const ResourcesPage = () => {
 
   if (currentResource) {
     return (
-      <div className="bg-[#01040f] text-white min-h-screen">
+      <div className="bg-[var(--color-bg-root)] text-[var(--color-text-primary)] min-h-screen">
         <SEOHead
           title={currentResource.title}
           description={currentResource.description}
           path={getPath(`/resources/${resource}`)}
         />
-        <Header />
 
         <main className="relative overflow-hidden py-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,197,94,0.08),transparent_55%),radial-gradient(circle_at_bottom,_rgba(124,58,237,0.15),transparent_45%)] pointer-events-none" />
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold mb-6">{currentResource.title}</h1>
-            <p className="text-lg text-gray-300 leading-relaxed">{currentResource.description}</p>
+            <p className="text-lg text-[var(--color-text-secondary)] leading-relaxed">{currentResource.description}</p>
           </div>
         </main>
-
-        <Footer />
       </div>
     )
   }
@@ -44,18 +39,17 @@ const ResourcesPage = () => {
       <SEOHead
         title="Resources"
         description="Security, privacy, and legal information."
-        path={getPath('/resources')}
+          path={getPath('/resources')}
       />
-      <Header />
 
-      <main id="main-content" className="relative overflow-hidden py-20">
+      <main className="relative overflow-hidden py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,197,94,0.08),transparent_55%),radial-gradient(circle_at_bottom,_rgba(124,58,237,0.15),transparent_45%)] pointer-events-none" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4">
               {language === 'en' ? 'Resources' : 'Ресурсы'}
             </h1>
-            <p className="text-gray-300">
+            <p className="text-[var(--color-text-secondary)]">
               {language === 'en'
                 ? 'Security, privacy, and legal information about Workyy.'
                 : 'Безопасность, конфиденциальность и правовая информация о Workyy.'}
@@ -68,18 +62,16 @@ const ResourcesPage = () => {
                 <Link
                   key={key}
                   to={getPath(`/resources/${key}`)}
-                  className="surface-panel p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition"
+                  className="surface-panel p-6 rounded-2xl border border-[var(--color-border)] hover:bg-[var(--color-bg-surface)]/80 transition-smooth"
                 >
                   <h3 className="text-xl font-semibold mb-2">{res.title}</h3>
-                  <p className="text-sm text-gray-300">{res.description.substring(0, 150)}...</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">{res.description.substring(0, 150)}...</p>
                 </Link>
               )
             })}
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }

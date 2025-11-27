@@ -1,8 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import { SEOHead } from '../components/SEOHead'
-import { Header } from '../components/Header'
-import { Footer } from '../components/Footer'
 
 const ComparePage = () => {
   const { comparison } = useParams<{ comparison?: string }>()
@@ -18,48 +16,44 @@ const ComparePage = () => {
 
   if (currentComparison) {
     return (
-      <div className="bg-[#01040f] text-white min-h-screen">
+      <div className="bg-[var(--color-bg-root)] text-[var(--color-text-primary)] min-h-screen">
         <SEOHead
           title={currentComparison.title}
           description={currentComparison.description}
           path={getPath(`/compare/${comparison}`)}
         />
-        <Header />
 
-        <main id="main-content" className="relative overflow-hidden py-20">
+        <main className="relative overflow-hidden py-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,197,94,0.08),transparent_55%),radial-gradient(circle_at_bottom,_rgba(124,58,237,0.15),transparent_45%)] pointer-events-none" />
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold mb-6">{currentComparison.title}</h1>
-            <p className="text-lg text-gray-300 leading-relaxed mb-8">{currentComparison.description}</p>
+            <p className="text-lg text-[var(--color-text-secondary)] leading-relaxed mb-8">{currentComparison.description}</p>
             <Link
               to={getPath('/pricing')}
-              className="inline-block px-6 py-3 rounded-md bg-brand-green text-[#01040f] font-semibold hover:bg-green-400 transition"
+              className="inline-block px-6 py-3 rounded-md bg-[var(--color-accent-primary)] text-[var(--color-text-on-accent)] font-semibold hover:opacity-90 transition-smooth"
             >
               {currentComparison.cta}
             </Link>
           </div>
         </main>
-
-        <Footer />
       </div>
     )
   }
 
   return (
-    <div className="bg-[var(--bg-root)] text-[var(--text-primary)] min-h-screen transition-colors duration-300">
+    <div className="bg-[var(--color-bg-root)] text-[var(--color-text-primary)] min-h-screen transition-theme">
       <SEOHead
         title="Compare"
         description="See how Workyy compares to other analytics tools."
         path={getPath('/compare')}
       />
-      <Header />
 
       <main className="relative overflow-hidden py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,197,94,0.08),transparent_55%),radial-gradient(circle_at_bottom,_rgba(124,58,237,0.15),transparent_45%)] pointer-events-none" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4">{language === 'en' ? 'Compare' : 'Сравнение'}</h1>
-            <p className="text-gray-300">
+            <p className="text-[var(--color-text-secondary)]">
               {language === 'en'
                 ? 'See how Workyy compares to other analytics solutions.'
                 : 'Узнайте, как Workyy сравнивается с другими аналитическими решениями.'}
@@ -72,18 +66,16 @@ const ComparePage = () => {
                 <Link
                   key={key}
                   to={getPath(`/compare/${key}`)}
-                  className="surface-panel p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition"
+                  className="surface-panel p-6 rounded-2xl border border-[var(--color-border)] hover:bg-[var(--color-bg-surface)]/80 transition-smooth"
                 >
                   <h3 className="text-xl font-semibold mb-2">{comp.title}</h3>
-                  <p className="text-sm text-gray-300">{comp.description.substring(0, 200)}...</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">{comp.description.substring(0, 200)}...</p>
                 </Link>
               )
             })}
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }

@@ -32,7 +32,7 @@ export const LanguageToggle = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="px-3 py-1.5 rounded-md border border-white/20 bg-white/5 hover:bg-white/10 transition text-sm uppercase tracking-wider text-white"
+      className="px-3 py-1.5 rounded-md border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:bg-[var(--color-bg-surface)]/80 transition-smooth text-sm uppercase tracking-wider text-[var(--color-text-primary)]"
     >
       {language === 'en' ? 'RU' : 'EN'}
     </button>

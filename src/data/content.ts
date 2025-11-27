@@ -133,6 +133,49 @@ export interface Content {
     title: string
     description: string
   }
+  footer: {
+    brandTitle: string
+    brandDescription: string
+    product: {
+      title: string
+      canvas: string
+      collaboration: string
+      performance: string
+      pricing: string
+      changelog: string
+      roadmap: string
+    }
+    useCases: {
+      title: string
+      dataAnalysis: string
+      selfServe: string
+      reporting: string
+      dataModeling: string
+      productAnalytics: string
+      financeOps: string
+    }
+    compare: {
+      title: string
+      classicBi: string
+      notebooks: string
+      smallTeams: string
+      startups: string
+    }
+    integrations: {
+      title: string
+      postgres: string
+      snowflake: string
+      bigquery: string
+      mysql: string
+      csvFiles: string
+    }
+    resources: {
+      title: string
+      security: string
+      privacy: string
+      terms: string
+    }
+  }
 }
 
 export const content: Record<Language, Content> = {
@@ -251,21 +294,9 @@ export const content: Record<Language, Content> = {
         description: 'Workyy isn\'t just about work – it\'s also about engaging users to think analytically in a fun way.',
         games: [
           {
-            title: 'Decision Simulator',
-            description: 'Adjust sliders for budget or prices and watch how the forecast and results chart change.',
-            detail: 'A mini-sandbox that demonstrates how Workyy instantly visualizes scenarios.',
-            icon: '🎛️',
-          },
-          {
-            title: 'Messy Data Cleanup',
-            description: 'Find outliers, fill gaps, and bring a dataset into order against a timer.',
-            detail: 'A game that teaches why data preparation is critical before analytics.',
-            icon: '🧼',
-          },
-          {
             title: 'Insight Tarot',
-            description: 'Draw three cards "Past / Present / Future" and get a fun analytical tip.',
-            detail: 'A light game that shows how Workyy helps think along a timeline.',
+            description: 'Want to relax and see your future?',
+            detail: 'Draw three cards "Past / Present / Future" and get a fun analytical tip.',
             icon: '🔮',
           },
         ],
@@ -452,6 +483,49 @@ export const content: Record<Language, Content> = {
       title: 'Roadmap',
       description: 'See what\'s coming next. Our Roadmap offers a transparent view of the features and improvements we plan to implement in Workyy.',
     },
+    footer: {
+      brandTitle: 'Workyy',
+      brandDescription: 'Mixed SQL and Python nodes, DAG and collaborative analytics on one canvas.',
+      product: {
+        title: 'PRODUCT',
+        canvas: 'The Canvas',
+        collaboration: 'Collaboration',
+        performance: 'Performance',
+        pricing: 'Pricing',
+        changelog: 'Changelog',
+        roadmap: 'Roadmap',
+      },
+      useCases: {
+        title: 'USE CASES',
+        dataAnalysis: 'Data analysis',
+        selfServe: 'Self-serve analytics',
+        reporting: 'Reporting',
+        dataModeling: 'Data modeling',
+        productAnalytics: 'Product analytics',
+        financeOps: 'Finance & Ops',
+      },
+      compare: {
+        title: 'COMPARE',
+        classicBi: 'Workyy vs Classic BI',
+        notebooks: 'Workyy vs Notebooks',
+        smallTeams: 'Workyy for Small Teams',
+        startups: 'Workyy for Startups',
+      },
+      integrations: {
+        title: 'INTEGRATIONS',
+        postgres: 'Postgres',
+        snowflake: 'Snowflake',
+        bigquery: 'BigQuery',
+        mysql: 'MySQL',
+        csvFiles: 'CSV / files',
+      },
+      resources: {
+        title: 'RESOURCES',
+        security: 'Security',
+        privacy: 'Privacy Policy',
+        terms: 'Terms of Use',
+      },
+    },
   },
   ru: {
     home: {
@@ -568,20 +642,8 @@ export const content: Record<Language, Content> = {
         description: 'Разогрейте аналитическое мышление: мини-игры демонстрируют, как Workyy помогает экспериментировать с данными.',
         games: [
           {
-            title: 'Decision Simulator',
-            description: 'Крутите слайдеры бюджета и сразу смотрите, как меняется показатель на графике.',
-            detail: 'Мини-песочница демонстрирует, как Workyy мгновенно визуализирует сценарии.',
-            icon: '🎛️',
-          },
-          {
-            title: 'Messy Data Cleanup',
-            description: 'Найдите выбросы и пропуски в мини-таблице, чтобы увидеть чистый тренд.',
-            detail: 'Игра обучает, почему подготовка данных критична перед аналитикой.',
-            icon: '🧼',
-          },
-          {
             title: 'Insight Tarot',
-            description: 'Вытащите три карты — прошлое, настоящее и будущее вашего датасета.',
+            description: 'Хотите расслабиться и увидеть своё будущее?',
             detail: 'Лёгкая игра, которая показывает, как Workyy помогает думать по временной шкале.',
             icon: '🔮',
           },
@@ -768,6 +830,49 @@ export const content: Record<Language, Content> = {
     roadmap: {
       title: 'Roadmap',
       description: 'Узнайте, что впереди. Наш Roadmap (план развития) предоставляет прозрачный обзор функций и улучшений, которые мы планируем внедрить в Workyy.',
+    },
+    footer: {
+      brandTitle: 'Workyy',
+      brandDescription: 'Смешанные SQL и Python узлы, DAG и совместная аналитика на одной канве.',
+      product: {
+        title: 'PRODUCT',
+        canvas: 'The Canvas',
+        collaboration: 'Collaboration',
+        performance: 'Performance',
+        pricing: 'Pricing',
+        changelog: 'Changelog',
+        roadmap: 'Roadmap',
+      },
+      useCases: {
+        title: 'USE CASES',
+        dataAnalysis: 'Data analysis',
+        selfServe: 'Self-serve analytics',
+        reporting: 'Reporting',
+        dataModeling: 'Data modeling',
+        productAnalytics: 'Product analytics',
+        financeOps: 'Finance & Ops',
+      },
+      compare: {
+        title: 'COMPARE',
+        classicBi: 'Workyy vs классические BI',
+        notebooks: 'Workyy vs ноутбуки',
+        smallTeams: 'Workyy для маленьких команд',
+        startups: 'Workyy для стартапов',
+      },
+      integrations: {
+        title: 'INTEGRATIONS',
+        postgres: 'Postgres',
+        snowflake: 'Snowflake',
+        bigquery: 'BigQuery',
+        mysql: 'MySQL',
+        csvFiles: 'CSV / файлы',
+      },
+      resources: {
+        title: 'RESOURCES',
+        security: 'Security',
+        privacy: 'Privacy Policy',
+        terms: 'Terms of Use',
+      },
     },
   },
 }

@@ -58,16 +58,16 @@ export const AnalyticsTarot = () => {
   }
 
   return (
-    <div className="surface-panel border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center gap-4">
+    <div className="surface-panel border border-[var(--color-border)] rounded-2xl p-6 flex flex-col items-center text-center gap-4">
       <div className="text-5xl">🎴</div>
       {selectedCard === null ? (
         <>
-          <p className="text-gray-300 text-sm">
+          <p className="text-[var(--color-text-secondary)] text-sm">
             {language === 'en' ? 'Draw a card — get an analytics tip.' : 'Вытащите карту — получите аналитический совет.'}
           </p>
           <button
             onClick={drawCard}
-            className="px-4 py-2 rounded-md bg-brand-green text-[#01040f] font-semibold hover:bg-green-400 transition"
+            className="px-4 py-2 rounded-md bg-[var(--color-accent-primary)] text-[var(--color-text-on-accent)] font-semibold hover:opacity-90 transition-smooth"
           >
             {language === 'en' ? 'Draw Card' : 'Вытянуть карту'}
           </button>
@@ -75,11 +75,11 @@ export const AnalyticsTarot = () => {
       ) : (
         <div className={`space-y-2 ${isFlipping ? 'opacity-0' : 'opacity-100'} transition-opacity`}>
           <div className="text-4xl mb-2">{cards[selectedCard].icon}</div>
-          <p className="font-semibold text-lg">{cards[selectedCard].title}</p>
-          <p className="text-sm text-gray-300">{cards[selectedCard].advice}</p>
+          <p className="font-semibold text-lg text-[var(--color-text-primary)]">{cards[selectedCard].title}</p>
+          <p className="text-sm text-[var(--color-text-secondary)]">{cards[selectedCard].advice}</p>
           <button
             onClick={drawCard}
-            className="px-4 py-2 rounded-md border border-white/30 text-sm hover:bg-white/10 transition"
+            className="px-4 py-2 rounded-md border border-[var(--color-border)] text-sm hover:bg-[var(--color-bg-surface)] transition-smooth"
           >
             {language === 'en' ? 'Another one' : 'Ещё одну'}
           </button>
