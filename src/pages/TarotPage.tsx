@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SEOHead } from '../components/SEOHead'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -8,6 +9,10 @@ export default function TarotPage() {
   const navigate = useNavigate()
 
   const getPath = (path: string) => `/${language}${path}`
+
+  useEffect(() => {
+    console.log('✅ TarotPage loaded')
+  }, [])
 
   return (
     <>
